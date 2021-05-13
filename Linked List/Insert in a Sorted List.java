@@ -32,36 +32,25 @@ Constraints:
 // Kashif Iqbal
 // 13-May-2021	
 
-class Solution
-{
-	public static Node sortedInsert(Node head,int data) {
-	    
-	    Node temp = new Node(data);
-	    Node current = head;
-	    
-	    if(head == null){
-	        head = temp;
-	        head.next = head;
-	    }
-	    
-	    else if(data <= current.data){
-	        while(current.next != head){
-	            current = current.next;
-	        }
-	        current.next = temp;
-	        temp.next = head;
-	        head = temp;
-	    }
-	    
-	    else{
-            while(current.next != head && data > current.next.data){
-	        current = current.next;
-	    }
-            temp.next = current.next;
-            current.next = temp;
-            current = temp;
-            }
+class Solution {
+    Node sortedInsert(Node head1, int key) {
+        
+        Node temp = new Node(key);
+        Node current = head1;
+        
+        if(head1 == null || key <= current.data){
+            temp.next = head1;
+            head1 = temp;
+            return head1;
+        }
+        
+        while(current.next != null && key > current.next.data){
+            current = current.next;
+        }
 
-	    return head;
-     }
+        temp.next = current.next;
+        current.next = temp;
+        
+        return head1;
+    }
 }
