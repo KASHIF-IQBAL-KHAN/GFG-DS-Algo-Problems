@@ -37,29 +37,23 @@ Constraints:
 // Kashif Iqbal
 // 17-May-2021	
 
-class Solution{
-    //Function to reverse words in a given string.
 
-    String reverseWords(String S){
+class Solution {
+    
+    String reverseWords(String S) {
         
-        String[] words = S.split("\\.");
-        
-        ArrayList<String> list = new ArrayList<>();
-        String reverseList = "";
-        
-        for(String str : words){
-            list.add(str);
-        }
-        
-        ListIterator<String> itr = list.listIterator(list.size());
-        
-        while(itr.hasPrevious()){
-            reverseList = reverseList + itr.previous();
-            if(itr.hasPrevious()){
-                reverseList = reverseList + ".";
+        String reverse = "";
+        String[] splitString = S.split("\\.");
+
+        for(int itr = splitString.length-1; itr >= 0; --itr) {
+            reverse  = reverse + splitString[itr];
+            
+            if(itr > 0) {
+                reverse = reverse + ".";
             }
+            
         }
         
-        return answer;
+        return reverse;
     }
 }
