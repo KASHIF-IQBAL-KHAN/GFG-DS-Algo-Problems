@@ -46,24 +46,24 @@ Array may contain duplicates.
 
 // O(N^2)
 
-// class Solution 
-// { 
-// 	public static long[] productExceptSelf(int nums[], int n) 
-// 	{ 
-// 	    long[] productArray = new long[n];
+class Solution 
+{ 
+	public static long[] productExceptSelf(int nums[], int n) 
+	{ 
+	    long[] productArray = new long[n];
 
-// 	    for(int itr = 0; itr < n; ++itr){
-// 	        long product = 1;
-// 	        for(int jtr = 0; jtr < n; ++jtr){
-// 	            if(itr != jtr){
-// 	                product = product * nums[jtr];
-// 	            }
-// 	        }
-// 	        productArray[itr] = product;
-// 	    }
-// 	    return productArray;
-// 	} 
-// } 
+	    for(int itr = 0; itr < n; ++itr){
+	        long product = 1;
+	        for(int jtr = 0; jtr < n; ++jtr){
+	            if(itr != jtr){
+	                product = product * nums[jtr];
+	            }
+	        }
+	        productArray[itr] = product;
+	    }
+	    return productArray;
+	} 
+} 
 
 // O(N)
 
@@ -103,7 +103,6 @@ class Solution {
             }
         }
         return ansProductArray;
-
     }
 }
 
