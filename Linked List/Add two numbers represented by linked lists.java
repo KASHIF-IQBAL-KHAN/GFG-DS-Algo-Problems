@@ -103,3 +103,78 @@ class Solution{
         return head;
     }
 }
+
+//Another Method
+
+class Solution{
+    public static Node reverse(Node head){
+        Node prev = null;
+        Node current = head;
+        Node next = null;
+        
+        while(current != null){
+            next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next;
+        }
+        return prev;
+    }
+    
+    static Node addTwoLists(Node first, Node second){
+        
+        Node revFirstHead = reverse(first);
+        Node revSecondHead = reverse(second);
+        Node newListHead = null;
+        Node newListTail = null;
+        
+        int sum = 0;
+        int carry = 0;
+        
+        while(revFirstHead != null && revSecondHead != null){
+            sum = (revFirstHead.data + revSecondHead.data + carry) % 10;
+            carry = (revFirstHead.data + revSecondHead.data + carry) / 10;
+            
+            Node temp = new Node(sum);
+            
+            if(newListHead == null){
+                newListHead = temp;
+                newListTail = temp;
+            } else {
+                newListTail.next = temp;
+                newListTail = newListTail.next;
+            }
+            
+            revFirstHead = revFirstHead.next;
+            revSecondHead = revSecondHead.next;
+            
+        }
+        
+        while(revFirstHead != null){
+            sum = (revFirstHead.data + carry) % 10;
+            carry = (revFirstHead.data + carry) / 10;
+            Node temp = new Node(sum);
+            newListTail.next = temp;
+            newListTail = newListTail.next;
+            revFirstHead=revFirstHead.next;
+        }
+        
+        while(revSecondHead != null){
+            sum = (revSecondHead.data + carry) % 10;
+            carry = (revSecondHead.data + carry) / 10;
+            Node temp = new Node(sum);
+            newListTail.next = temp;
+            newListTail = newListTail.next;
+            revSecondHead=revSecondHead.next;
+        }
+        
+        if(carry > 0){
+            Node temp = new Node(carry);
+            newListTail.next = temp;
+            newListTail = newListTail.next;
+        }
+        
+        return reverse(newListHead);
+        
+    }
+}
