@@ -86,3 +86,34 @@ class Tree{
         return list;
     }
 }
+
+
+//Recursive
+
+class Solution {
+
+    int maxLevel = 0;
+
+    void helper(Node node, ArrayList < Integer > list, int level) {
+        if (node == null) {
+            return;
+        }
+
+        if (maxLevel < level) {
+            list.add(node.data);
+            maxLevel = level;
+        }
+
+        helper(node.left, list, level + 1);
+        helper(node.right, list, level + 1);
+    }
+
+    ArrayList < Integer > rightView(Node node) {
+
+        ArrayList < Integer > list = new ArrayList < > ();
+
+        helper(node, list, 1);
+
+        return list;
+    }
+}
