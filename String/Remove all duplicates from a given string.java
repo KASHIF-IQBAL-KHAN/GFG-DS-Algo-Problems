@@ -39,6 +39,20 @@ String contains uppercase and lowercase english letters.
 
 class Solution {
     String removeDuplicates(String str) {
+        String ans = "";
+        
+        for(int itr = 0; itr < str.length(); ++itr){
+            if(ans.indexOf(str.charAt(itr)) == -1){
+                ans = ans + str.charAt(itr);
+            }
+        }
+        return ans;
+    }
+}
+
+//Other Approach
+class Solution {
+    String removeDuplicates(String str) {
         
         java.util.LinkedHashSet<Character> list = new java.util.LinkedHashSet<>();
         
