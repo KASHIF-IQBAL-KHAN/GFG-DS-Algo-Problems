@@ -73,3 +73,55 @@ class Solution
         }
     }
 }
+
+//O(1) Space
+
+class Solution {
+    
+    public static int length(Node head) {
+        int count = 1;
+        Node first = head;
+        while (first.next != head) {
+            ++count;
+            first = first.next;
+        }
+        return count;
+    }
+
+    public static Node detectLoop(Node head) {
+        Node slow = head;
+        Node fast = head.next;
+
+        while (fast != null && fast.next != null) {
+            if (slow == fast) {
+                return slow;
+            }
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return null;
+    }
+
+    public static void removeLoop(Node head) {
+        Node ptr = detectLoop(head);
+        if (ptr != null) {
+            int len = length(ptr);
+            ptr = head;
+            Node q = head;
+
+            for (int itr = 0; itr < len; ++itr) {
+                q = q.next;
+            }
+
+            while (q != ptr) {
+                q = q.next;
+                ptr = ptr.next;
+            }
+
+            while (q.next != ptr) {
+                q = q.next;
+            }
+            q.next = null;
+        }
+    }
+}
