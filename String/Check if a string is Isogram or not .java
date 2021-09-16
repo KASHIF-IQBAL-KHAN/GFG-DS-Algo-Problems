@@ -45,3 +45,25 @@ class Solution {
         return true;
     }
 }
+
+//O(1) space
+
+
+
+class Solution
+{
+    static boolean isIsogram(String data){
+       char[] hash = new char[256];
+        
+        for(int itr = 0; itr < data.length(); ++itr){
+            if(hash[(int)data.charAt(itr)] != 0){
+                return false;
+            } else {
+                hash[(int)data.charAt(itr)]++;
+            }
+        }
+        return true;
+    }
+}
+
+
