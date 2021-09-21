@@ -20,3 +20,25 @@ class Solution{
         return index;
     }
 };
+
+//Jav logn time
+
+
+class Solution {
+    public int findExtra(int a[], int b[], int n) {
+    int index  = n-1;
+    int left = 0;
+    int right = n-2;
+      
+    while(left <= right){
+        int mid = (left + right) / 2;
+        if(a[mid] == b[mid]){
+            left = mid + 1;
+        } else{
+            right = mid - 1;
+            index = mid;
+        }
+    }
+    return index;
+    }
+}
